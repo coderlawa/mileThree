@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'home',  # the home app
 ]
 
 MIDDLEWARE = [
@@ -61,7 +63,10 @@ ROOT_URLCONF = 'cook_book.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),  # Add this line to include the templates directory
+            os.path.join(BASE_DIR, 'templates', 'allauth'),  # Add this line to include the allauth templates directory
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
