@@ -3,15 +3,29 @@ html {
 }
 
 body {
-    font-family: "Poppins", sans-serif;
-    height: 100vh;
+    font-family: "Montserrat", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
     font-size: 1rem;
     line-height: 1.5;
-    background-color: #fff;
+}
+
+header {
+    height: 75px;
+    background-color: #FFE5B4;
+}
+
+main {
+    margin-top: 75px; /* Adjust this value based on your header height */
+    height: 100%;
+    background-color: #FEFEFA;
 }
 
 .main-logo-link {
-    width:fit-content;
+    width: fit-content;
+    padding: 0;
 }
 
 .site-header-content,
@@ -37,9 +51,22 @@ header.container-fluid.fixed-top {
     border: 1px solid #000 !important;
 }
 
-/* .page-padding {
-    padding-top: 80px;
-} */
+.btn-black {
+    background: #000;
+    color: #fff;
+}
+
+.btn-black:hover {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.page-content {
+    flex: 1;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
 
 /* -------------- MEDIA QUERIES -------------- */
 @media (min-width: 1200px) {
@@ -59,6 +86,6 @@ header.container-fluid.fixed-top {
     }
 
     .header-container {
-        padding-top: 110px;
+        padding-top: 80px;
     }
 }
