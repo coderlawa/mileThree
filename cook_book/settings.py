@@ -27,6 +27,8 @@ SECRET_KEY = 'django-insecure-p3gu%_e8+h1%p407bgu3uajn345kep#!7!c)#o8v**0owj#ej_
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'localhost',
+    '.herokuapp.com',
     '127.0.0.1',
 ]
 
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'home',  # the home app
+    'recipes',  # the recipes app
 ]
 
 MIDDLEWARE = [
@@ -148,6 +151,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration

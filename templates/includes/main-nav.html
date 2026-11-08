@@ -1,0 +1,16 @@
+<div class="collapse navbar-collapse" id="main-nav">
+    <ul class="navbar-nav w-auto mx-auto">
+        <li class="nav-item dropdown">
+            <a class="logo-font fw-bold nav-link text-black me-5" href="#" id="all-recipes-link"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                All Recipes
+            </a>
+            <div class="dropdown-menu border-0 rounded-pill" aria-labelledby="all-recipes-link">
+                <a href="#" class="dropdown-item">Categories</a>
+                {% for category in categories %}
+                    <!-- <a href="{% url 'recipes' %}?category={{ category.name }}" class="dropdown-item">{{ category.name }}</a> -->
+                {% endfor %}
+            </div>
+        </li>
+    </ul>
+</div>

@@ -12,6 +12,7 @@ body {
     line-height: 1.5;
 }
 
+/* for the header sitting behind the navbar  */
 header {
     height: 75px;
     background-color: #FFE5B4;
@@ -36,6 +37,11 @@ main {
     margin-right: auto;
     padding-left: clamp(1rem, 4vw, 3rem);
     padding-right: clamp(1rem, 4vw, 3rem);
+}
+
+/* the navbar i.e. the white strip housing : my cook book, the search bar & my profile */
+#topnav {
+    height: 73px;
 }
 
 header.container-fluid.fixed-top {

@@ -1,0 +1,1 @@
+web: gunicorn cook_book.wsgi:application
