@@ -49,6 +49,20 @@ header.container-fluid.fixed-top {
     padding-right: 0;
 }
 
+/* card styles */
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    max-height: 40vh !important;
+    object-fit: cover;
+}
+
 .text-black {
     color: #000 !important;
 }
