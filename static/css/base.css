@@ -63,6 +63,11 @@ header.container-fluid.fixed-top {
     object-fit: cover;
 }
 
+.faded {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 .text-black {
     color: #000 !important;
 }
