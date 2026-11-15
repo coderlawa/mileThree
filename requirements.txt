@@ -1,6 +1,9 @@
 asgiref==3.12.1
+bleach==6.4.0
 Django==6.1.1
 django-allauth==65.19.7
+django-summernote==0.8.20.0
 gunicorn==26.2.0
 pillow==13.0.0
 sqlparse==0.6.0
+webencodings==0.6.1

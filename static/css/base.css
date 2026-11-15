@@ -59,7 +59,7 @@ header.container-fluid.fixed-top {
 }
 
 .card-img-top {
-    max-height: 40vh !important;
+    height: 40vh;
     object-fit: cover;
 }
 
