@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 STATUS = (
     (0, "Private"),
@@ -11,7 +12,7 @@ STATUS = (
 class Recipe(models.Model):
     title = models.CharField(max_length=254)
     slug = models.SlugField(max_length=254, unique=True)
-    image = models.ImageField(upload_to='images/', null=True, blank=True)
+    image = CloudinaryField('Image', null=True, blank=True)
     description = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recipes')
     is_public = models.BooleanField(default=False)

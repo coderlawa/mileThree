@@ -28,7 +28,7 @@
                 {% if recipe.image %}
                 <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
                 {% else %}
-                <img src="/media/images/noimage.png" class="card-img-top" alt="{{ recipe.title }}">
+                <img src="{% static 'images/noimage.png' %}" class="card-img-top" alt="{{ recipe.title }}">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title"><strong>{{ recipe.title }}</strong> <span> by {{ recipe.author }}</span></h5>

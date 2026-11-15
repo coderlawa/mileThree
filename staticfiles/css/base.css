@@ -1,0 +1,116 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* for the header sitting behind the navbar  */
+header {
+    height: 75px;
+    background-color: #FFE5B4;
+}
+
+main {
+    margin-top: 75px; /* Adjust this value based on your header height */
+    height: 100%;
+    background-color: #FEFEFA;
+}
+
+.main-logo-link {
+    width: fit-content;
+    padding: 0;
+}
+
+.site-header-content,
+.page-content {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1rem, 4vw, 3rem);
+    padding-right: clamp(1rem, 4vw, 3rem);
+}
+
+/* the navbar i.e. the white strip housing : my cook book, the search bar & my profile */
+#topnav {
+    height: 73px;
+}
+
+header.container-fluid.fixed-top {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* card styles */
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 40vh;
+    object-fit: cover;
+}
+
+.faded {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.border-black {
+    border: 1px solid #000 !important;
+}
+
+.btn-black {
+    background: #000;
+    color: #fff;
+}
+
+.btn-black:hover {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+.page-content {
+    flex: 1;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* -------------- MEDIA QUERIES -------------- */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+}
+
+/* fixed top navbar only on medium and larger screens */
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 80px;
+    }
+}
