@@ -68,6 +68,11 @@ header.container-fluid.fixed-top {
     pointer-events: none;
 }
 
+#recipe-author {
+    font-size: 0.9rem;
+    color: #555;
+}
+
 .text-black {
     color: #000 !important;
 }

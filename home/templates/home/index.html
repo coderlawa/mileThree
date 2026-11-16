@@ -31,7 +31,7 @@
                 <img src="{% static 'images/noimage.png' %}" class="card-img-top" alt="{{ recipe.title }}">
                 {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title"><strong>{{ recipe.title }}</strong> <span> by {{ recipe.author }}</span></h5>
+                    <h5 class="card-title"><strong>{{ recipe.title }}</strong> <span id="recipe-author"> by {{ recipe.author }}</span></h5>
                     <p class="card-text">{{ recipe.description|truncatewords:10 | safe }}</p>
                     <a href="{% url 'recipe_detail' recipe.slug %}" class="btn btn-black">View Recipe</a>
                 </div>
