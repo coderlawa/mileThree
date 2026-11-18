@@ -12,7 +12,7 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row h-100">
-        <div class="col-12 ps-3">
+        <div class="col-12 ps-3 mt-2">
             <h3 class="text-black">
                 All Recipes
             </h3>
@@ -23,20 +23,24 @@
     </div>
     <div class="row">
         {% for recipe in recipes %}
-        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4{% if not recipe.is_public and recipe.author != user %} d-none{% endif %}">
-            <div class="card h-100{% if not recipe.is_public and recipe.author == user %} faded{% endif %}">
+        {% if recipe.is_public %}
+        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4{% if not recipe.status and recipe.author != user %} d-none{% endif %}">
+            <div class="card h-100{% if not recipe.status and recipe.author == user %} card-highlight{% endif %}">
                 {% if recipe.image %}
                 <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
                 {% else %}
                 <img src="{% static 'images/noimage.png' %}" class="card-img-top" alt="{{ recipe.title }}">
                 {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title"><strong>{{ recipe.title }}</strong> <span id="recipe-author"> by {{ recipe.author }}</span></h5>
-                    <p class="card-text">{{ recipe.description|truncatewords:10 | safe }}</p>
-                    <a href="{% url 'recipe_detail' recipe.slug %}" class="btn btn-black">View Recipe</a>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><strong>{{ recipe.title }}</strong> <br>
+                        <span id="recipe-author"> by {{ recipe.author }}</span>
+                    </h5>
+                    <p class="card-text mt-1">{{ recipe.description|striptags|truncatewords:6 | safe }}</p>
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="btn btn-black mt-auto align-self-start">View Recipe</a>
                 </div>
             </div>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 </div>

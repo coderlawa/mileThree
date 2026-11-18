@@ -15,7 +15,6 @@ body {
 /* for the header sitting behind the navbar  */
 header {
     height: 75px;
-    background-color: #FFE5B4;
 }
 
 main {
@@ -42,11 +41,20 @@ main {
 /* the navbar i.e. the white strip housing : my cook book, the search bar & my profile */
 #topnav {
     height: 73px;
+    background-color: #fff;
+}
+
+.topnav-band {
+    height: 75px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-bottom: 3px solid #FFE5B4;
 }
 
 header.container-fluid.fixed-top {
     padding-left: 0;
     padding-right: 0;
+    background-color: #FFE5B4;
 }
 
 /* card styles */
@@ -63,14 +71,18 @@ header.container-fluid.fixed-top {
     object-fit: cover;
 }
 
-.faded {
+.card-highlight {
     opacity: 0.5;
-    pointer-events: none;
+    border: 3.5px solid #f14523;
+}
+
+.card-text {
+    font-size: 0.9rem;
 }
 
 #recipe-author {
     font-size: 0.9rem;
-    color: #555;
+    color: #746d6d;
 }
 
 .text-black {
@@ -79,6 +91,17 @@ header.container-fluid.fixed-top {
 
 .border-black {
     border: 1px solid #000 !important;
+}
+
+.btn-red {
+    background: #ff0000;
+    color: #fff;
+}
+
+.btn-red:hover {
+    background: #fff;
+    color: #ff0000;
+    border: 1px solid #ff0000;
 }
 
 .btn-black {
