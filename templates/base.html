@@ -76,7 +76,7 @@
                         <form method="GET" action="{% url 'recipes' %}" class="d-flex">
                             <div class="input-group w-100">
                                 <input class="form-control border border-black rounded-5" type="text" name="q"
-                                    placeholder="search ..." value="{{ request.GET.q }}">
+                                    placeholder="search ..." value="{{ search_term }}" aria-label="Search" required>
                                 <div class="input-group-append">
                                     <button class="form-control btn btn-black border border-black rounded-5" type="submit">
                                     <span class="icon">

@@ -9,13 +9,13 @@ from recipes.models import Recipe
 
 def all_recipes(request):
     """
-    A view to return the searched recipes.
+    A view to return all the searched recipes.
     """
     recipes = Recipe.objects.filter(is_public=True, status=1)
     query = None
 
     if 'q' in request.GET:
-            query = request.GET['q']
+            query = request.GET['q'].strip()
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('recipes'))
