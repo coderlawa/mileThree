@@ -24,5 +24,5 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),  # Add this line for django-summernote
     path('accounts/', include('allauth.urls')),  # Add this line for django-allauth
     path('', include('home.urls')),  # Include the home app's URLs
-    path('recipe_detail/', include('recipes.urls')),  # Include the recipes app's URLs
+    path('recipe/', include('recipes.urls')),  # Include the recipes app's URLs
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

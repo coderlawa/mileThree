@@ -1,9 +1,34 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.urls import reverse
+from django.db.models import Q
 
 from recipes.models import Recipe
 
 # Create your views here.
+
+def all_recipes(request):
+    """
+    A view to return the searched recipes.
+    """
+    recipes = Recipe.objects.filter(is_public=True, status=1)
+    query = None
+
+    if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "You didn't enter any search criteria!")
+                return redirect(reverse('recipes'))
+
+            queries = Q(title__icontains=query) | Q(description__icontains=query)
+            recipes = recipes.filter(queries)
+
+    context = {
+        'recipes': recipes,
+        'search_term': query
+    }
+    
+    return render(request, 'recipes/recipes.html', context)
 
 def recipe_detail(request, slug):
     """

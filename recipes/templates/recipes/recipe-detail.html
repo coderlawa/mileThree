@@ -3,15 +3,15 @@
 
 {% block content %}
     <div class="container-fluid">
-        <div class="row h-100">
-            <div class="col ps-3">
+        <div class="row h-100 mt-2">
+            <div id="recipe-details-image" class="col ps-3 ">
                 {% if recipe.image %}
                 <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
                 {% else %}
                 <img src="{% static 'images/noimage.png' %}" class="card-img-top" alt="{{ recipe.title }}">
                 {% endif %}
             </div>
-            <div class="col my-auto ps-5">
+            <div id="recipe-details-text" class="col my-auto ps-5">
                 <h2 class="lead text-black display-6">
                     <strong>{{ recipe.title }}</strong>
                 </h2>
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col">
+            <div id="recipe-details-description" class="col">
                 <h3 class="lead text-black display-6">
                     <strong>Description</strong>
                 </h3>

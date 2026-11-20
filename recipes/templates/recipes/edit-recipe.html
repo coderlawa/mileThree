@@ -3,9 +3,18 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div>
-        <h2>Edit {{ recipe.title }}</h2>
-        
+    <div id="edit-recipe-hero" class="row text-center"
+        {% if recipe.image %}style="background-image: url('{{ recipe.image.url }}');"{% endif %}>
+        <h2 class="my-auto">Edit <strong>{{ recipe.title }}</strong></h2>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12 col-md-6 col-lg-4 offset-lg-4">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-black">Save Changes</button>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
