@@ -18,7 +18,7 @@
                 <div class="mt-5">
                     <p>
                         <strong>Author:</strong> {{ recipe.author }}<br>
-                        <strong>Added on:</strong> {{ recipe.created_on }}
+                        <strong>Added on:</strong> {{ recipe.created_on | date:"M j, Y" }}<br>
                     </p>
                 </div>
                 {% if recipe.author == user %}

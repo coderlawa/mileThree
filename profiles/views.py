@@ -7,7 +7,10 @@ def profile(request):
     return render(
         request,
         'profiles/profile.html',
-        {'profile_user': request.user},
+        {
+            'profile_user': request.user,
+            'recipes': request.user.recipes.all(),
+        },
     )
 
 
