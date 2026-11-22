@@ -19,7 +19,6 @@ header {
 
 main {
     margin-top: 75px; /* Adjust this value based on your header height */
-    height: 100%;
     background-color: #FEFEFA;
 }
 
@@ -168,10 +167,17 @@ header.container-fluid.fixed-top {
 }
 
 .profile-panel {
-    height: 100%;
     padding: 1.5rem;
     background-color: #fff;
     border: 1px solid #000;
+    border-radius: 0.5rem;
+}
+
+.profile-danger-panel {
+    padding: 1.5rem;
+    background-color: #fffafa;
+    border: 1px solid #f1aeb5;
+    border-left: 4px solid #dc3545;
     border-radius: 0.5rem;
 }
 

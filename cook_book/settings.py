@@ -107,6 +107,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"  # Add this line to specify the all
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # 'mandatory' for production
+ACCOUNT_CHANGE_EMAIL = True
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'

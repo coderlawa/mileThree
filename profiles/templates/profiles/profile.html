@@ -11,15 +11,15 @@
                 <a class="nav-link" href="{% url 'profile-settings' %}">Account Settings</a>
                 <a class="nav-link" href="{% url 'home' %}">Browse Recipes</a>
             </nav>
+            <a href="{% url 'add_recipe' %}" class="btn btn-black mt-5 col-12">Add a Recipe</a>
         </aside>
-        <section class="col-12 col-md-8 col-lg-9" aria-labelledby="profile-heading">
+        <section class="col-12 col-md-8 col-lg-9" aria-labelledby="my-recipes-heading">
             <div class="profile-panel mb-4">
                 <h2 id="recipes-heading" class="h4 text-black mb-3">My Recipes</h2>
                 {% if recipes %}
                 <div class="row g-3">
                     {% for recipe in recipes %}
-                    {% if recipe.is_public and recipe.author == user %}
-                    <div class="col-12{% if not recipe.status and recipe.author == user %} card-highlight{% endif %}">
+                    <div class="col-12{% if not recipe.status %} card-highlight{% endif %}">
                         <article class="card profile-recipe-card">
                             <div class="row g-0">
                                 <div class="col-4">
@@ -45,7 +45,6 @@
                             </div>
                         </article>
                     </div>
-                    {% endif %}
                     {% endfor %}
                 </div>
                 {% else %}
