@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
+from django.urls import reverse
 
 from recipes.models import Recipe
 
@@ -50,3 +51,38 @@ class RecipeVisibilityTests(TestCase):
         self.recipe.refresh_from_db()
         self.assertEqual(self.recipe.status, 0)
         self.assertRedirects(response, '/recipe_detail/test-recipe/')
+
+
+class RecipeCreationTests(TestCase):
+    def setUp(self):
+        self.author = User.objects.create_user(username='author', password='password')
+        self.client.force_login(self.author)
+
+    def test_add_recipe_generates_slug_from_title(self):
+        response = self.client.post(
+            reverse('add_recipe'),
+            {'title': 'Fresh Air', 'description': 'A test recipe'},
+        )
+
+        recipe = Recipe.objects.get(title='Fresh Air')
+        self.assertEqual(recipe.slug, 'fresh-air')
+        self.assertRedirects(
+            response,
+            reverse('recipe_detail', kwargs={'slug': 'fresh-air'}),
+        )
+
+    def test_add_recipe_adds_suffix_for_duplicate_title(self):
+        Recipe.objects.create(
+            title='Fresh Air',
+            slug='fresh-air',
+            description='Existing recipe',
+            author=self.author,
+        )
+
+        response = self.client.post(
+            reverse('add_recipe'),
+            {'title': 'Fresh Air', 'description': 'Another test recipe'},
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(Recipe.objects.filter(slug='fresh-air-2').exists())

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container-fluid">
@@ -9,9 +10,10 @@
     </div>
     <div class="row mt-5">
         <div class="col-12 col-md-6 col-lg-4 offset-lg-4">
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" action="{% url 'edit_recipe' recipe.slug %}" class="form mb-3" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ recipe_form | crispy | safe }}
+                <a href="{% url 'home' %}" class="btn btn-red">Cancel</a>
                 <button type="submit" class="btn btn-black">Save Changes</button>
             </form>
         </div>

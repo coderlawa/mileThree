@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row g-4">
+        <aside class="col-12 col-md-4 col-lg-3">
+            <h1 class="h3 text-black mb-3">My Account</h1>
+            <nav class="nav nav-pills flex-column profile-nav" aria-label="Profile navigation">
+                <a class="nav-link active" href="{% url 'profile' %}" aria-current="page">My Profile</a>
+                <a class="nav-link" href="{% url 'profile-settings' %}">Account Settings</a>
+                <a class="nav-link" href="{% url 'home' %}">Browse Recipes</a>
+            </nav>
+        </aside>
+        <section class="col-12 col-md-8 col-lg-9" aria-labelledby="profile-heading">
+            <div class="profile-panel">
+                <h2 id="profile-heading" class="h4 text-black mb-4">My Recipes</h2>
+                <dl class="row mb-0">
+                    <dt class="col-sm-3">Username</dt>
+                    <dd class="col-sm-9">{{ profile_user.username }}</dd>
+                    <dt class="col-sm-3">Email</dt>
+                    <dd class="col-sm-9 mb-0">{{ profile_user.email|default:"Not provided" }}</dd>
+                </dl>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}

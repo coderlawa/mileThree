@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary_storage',  # Add this line for Cloudinary storage
     'django_summernote',  # Add this line for django-summernote
+    'crispy_forms',  # Add this line for crispy forms
+    'crispy_bootstrap5',  # Add this line for crispy bootstrap5
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
     'cloudinary',  # Add this line for Cloudinary integration
     'home',  # the home app
     'recipes',  # the recipes app
+    'profiles',  # the profiles app
 ]
 
 MIDDLEWARE = [
@@ -98,6 +101,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
+CRISPY_TEMPLATE_PACK = 'bootstrap5'  # Add this line to specify the crispy forms template pack
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"  # Add this line to specify the allowed template packs for crispy forms
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True

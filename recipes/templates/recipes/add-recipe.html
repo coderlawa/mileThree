@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <div class="container-fluid">
-        <div class="row h-100">
-            <div class="col-12 ps-3">
-                <p class="lead text-black">
-                    New recipes go here!!
-                </p>
-            </div>
+<div class="container-fluid">
+    <div id="add-recipe-hero" class="row text-center">
+        <h2 class="my-auto">Add A Recipe</h2>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12 col-md-6 col-lg-4 offset-lg-4">
+            <form method="POST" action="{% url 'add_recipe' %}" class="form mb-3" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ recipe_form | crispy | safe }}
+                <a href="{% url 'home' %}" class="btn btn-red">Cancel</a>
+                <button type="submit" class="btn btn-black">Add Recipe</button>
+            </form>
         </div>
     </div>
+</div>
 {% endblock %}

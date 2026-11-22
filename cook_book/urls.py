@@ -25,4 +25,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),  # Add this line for django-allauth
     path('', include('home.urls')),  # Include the home app's URLs
     path('recipe/', include('recipes.urls')),  # Include the recipes app's URLs
+    path('profile/', include('profiles.urls')),  # Include the profiles app's URLs
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
