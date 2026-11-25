@@ -18,14 +18,15 @@ def all_recipes(request):
     A view to return all the searched recipes.
     """
 
+    author_username = request.GET.get('author', '').strip()
     recipes = Recipe.objects.filter(is_public=True, status=1)
     query = None
 
-    # Fetch public recipes and private recipes of the logged-in user
-    if request.user.is_authenticated:
+    if author_username:
+        recipes = recipes.filter(author__username=author_username)
+    elif request.user.is_authenticated:
+        # Include the logged-in user's private recipes in the normal listing.
         recipes = recipes | Recipe.objects.filter(author=request.user, status=0)
-        
-    
 
     if 'q' in request.GET:
         query = request.GET['q'].strip()
@@ -38,7 +39,7 @@ def all_recipes(request):
 
     context = {
         'recipes': recipes,
-        'search_term': query
+        'search_term': query,
     }
     
     return render(request, 'recipes/recipes.html', context)

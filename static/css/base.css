@@ -56,6 +56,20 @@ header.container-fluid.fixed-top {
     background-color: #FFE5B4;
 }
 
+/* -------------------- MESSAGE STYLES -------------------- */
+.message-container {
+    position: fixed;
+    top: 90px; /* below the fixed header */
+    right: 1rem;
+    z-index: 1040;
+    width: min(90vw, 28rem);
+    pointer-events: none;
+}
+
+.message-container .alert {
+    pointer-events: auto;
+}
+
 /* -------------------- CARD STYLES -------------------- */
 .card {
     transition: transform 0.2s;
@@ -77,6 +91,11 @@ header.container-fluid.fixed-top {
 
 .card-text {
     font-size: 0.9rem;
+}
+
+.profile-recipe-card {
+    border: 1px solid #000;
+    border-radius: 0.5rem;
 }
 
 /* -------------------- RECIPE STYLES -------------------- */
@@ -192,6 +211,54 @@ header.container-fluid.fixed-top {
     height: 30vh;
     max-height: 30vh;
     object-fit: cover;
+}
+
+/* --------------------- ACCOUNT PAGE STYLES --------------------- */
+.auth-page {
+    min-height: 60vh;
+}
+
+.auth-card {
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 0.75rem;
+}
+
+.auth-card .card-body {
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.auth-card a:not(.btn) {
+    color: #000;
+    text-underline-offset: 0.2em;
+}
+
+.auth-card a:not(.btn):hover {
+    color: #555;
+}
+
+.auth-form input:not([type="checkbox"]):not([type="hidden"]),
+.auth-form select,
+.auth-form textarea {
+    border-color: #ced4da;
+    border-radius: 0.375rem;
+}
+
+.auth-form input:focus,
+.auth-form select:focus,
+.auth-form textarea:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 0.2rem rgba(255, 229, 180, 0.75);
+}
+
+.auth-form .form-check-input:checked {
+    background-color: #000;
+    border-color: #000;
+}
+
+.auth-card .btn {
+    min-height: 2.75rem;
 }
 
 /* -------------------- TEXT & BORDER STYLES -------------------- */

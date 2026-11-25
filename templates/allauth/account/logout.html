@@ -1,25 +1,25 @@
-{% extends "account/base_manage.html" %}
-{% load allauth i18n %}
-{% block head_title %}
-    {% trans "Sign Out" %}
-{% endblock head_title %}
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block extra_title %}| Sign Out{% endblock %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Out" %}
-    {% endelement %}
-    {% element p %}
-        {% trans 'Are you sure you want to sign out?' %}
-    {% endelement %}
-    {% url 'account_logout' as action_url %}
-    {% element form method="post" action=action_url no_visible_fields=True %}
-        {% slot body %}
-            {% csrf_token %}
-            {{ redirect_field }}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" %}
-                {% trans 'Sign Out' %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
+<div class="container auth-page py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <section class="auth-card shadow-sm">
+                <div class="card-body text-center">
+                    <h1 class="h2 text-black mb-3">{% trans "Sign Out" %}</h1>
+                    <p class="mb-4">{% trans "Are you sure you want to sign out?" %}</p>
+                    <form class="auth-form" method="post" action="{% url 'account_logout' %}">
+                        {% csrf_token %}
+                        {{ redirect_field }}
+                        <button class="btn btn-red w-100" type="submit">{% trans "Sign Out" %}</button>
+                    </form>
+                    <a class="btn btn-black w-100 mt-2" href="{% url 'home' %}">{% trans "Cancel" %}</a>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
 {% endblock content %}

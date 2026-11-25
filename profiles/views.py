@@ -15,7 +15,7 @@ def profile(request):
         'profiles/profile.html',
         {
             'profile_user': request.user,
-            'recipes': request.user.recipes.all(),
+            'recipes': request.user.recipes.filter(is_public=True, status=1) | request.user.recipes.filter(status=0),
         },
     )
 

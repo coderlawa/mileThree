@@ -149,3 +149,30 @@ class ProfileSettingsTests(TestCase):
         self.assertRedirects(response, reverse('home'))
         self.assertFalse(get_user_model().objects.filter(pk=self.user.pk).exists())
         self.assertFalse(Recipe.objects.filter(pk=recipe.pk).exists())
+
+
+class AllauthTemplateTests(TestCase):
+    def test_login_and_signup_use_the_site_layout(self):
+        for route_name in ('account_login', 'account_signup'):
+            with self.subTest(route_name=route_name):
+                response = self.client.get(reverse(route_name))
+
+                self.assertEqual(response.status_code, 200)
+                self.assertContains(response, 'auth-card')
+                self.assertContains(response, 'My Cook Book')
+                self.assertNotContains(response, 'Menu:')
+
+    def test_logout_uses_the_site_layout_and_post_form(self):
+        user = get_user_model().objects.create_user(
+            username='logout-user',
+            password='password',
+        )
+        self.client.force_login(user)
+
+        response = self.client.get(reverse('account_logout'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'auth-card')
+        self.assertContains(response, 'name="csrfmiddlewaretoken"')
+        self.assertContains(response, 'Sign Out')
+        self.assertNotContains(response, 'Menu:')

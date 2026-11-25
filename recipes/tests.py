@@ -86,3 +86,66 @@ class RecipeCreationTests(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Recipe.objects.filter(slug='fresh-air-2').exists())
+
+
+class RecipeAuthorBrowseTests(TestCase):
+    def setUp(self):
+        self.author = User.objects.create_user(username='recipe-author', password='password')
+        self.visitor = User.objects.create_user(username='visitor', password='password')
+        self.public_recipe = Recipe.objects.create(
+            title='Public recipe',
+            slug='public-recipe',
+            description='Public description',
+            author=self.author,
+            is_public=True,
+            status=1,
+        )
+        Recipe.objects.create(
+            title='Private recipe',
+            slug='private-recipe',
+            description='Private description',
+            author=self.author,
+            is_public=False,
+            status=0,
+        )
+        Recipe.objects.create(
+            title='Another author recipe',
+            slug='another-author-recipe',
+            description='Different author',
+            author=self.visitor,
+            is_public=True,
+            status=1,
+        )
+
+    def test_owner_author_link_goes_to_own_profile(self):
+        self.client.force_login(self.author)
+        response = self.client.get(
+            reverse('recipe_detail', kwargs={'slug': self.public_recipe.slug})
+        )
+
+        self.assertContains(response, f'href="{reverse("profile")}">recipe-author</a>')
+
+    def test_other_viewer_author_link_filters_to_public_recipes_by_author(self):
+        response = self.client.get(
+            reverse('recipe_detail', kwargs={'slug': self.public_recipe.slug})
+        )
+
+        self.assertContains(
+            response,
+            f'href="{reverse("recipes")}?author=recipe-author">recipe-author</a>',
+        )
+
+        results = self.client.get(
+            reverse('recipes'),
+            {'author': self.author.username},
+        )
+
+        self.assertEqual(list(results.context['recipes']), [self.public_recipe])
+
+    def test_author_filter_can_be_narrowed_by_existing_text_search(self):
+        response = self.client.get(
+            reverse('recipes'),
+            {'author': self.author.username, 'q': 'Public'},
+        )
+
+        self.assertEqual(list(response.context['recipes']), [self.public_recipe])
