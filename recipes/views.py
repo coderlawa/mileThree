@@ -34,7 +34,7 @@ def all_recipes(request):
             messages.error(request, "You didn't enter any search criteria!")
             return redirect(reverse('recipes'))
 
-        queries = Q(title__icontains=query) | Q(description__icontains=query)
+        queries = Q(title__icontains=query) | Q(description__icontains=query) | Q(author__username__icontains=query)
         recipes = recipes.filter(queries)
 
     context = {
