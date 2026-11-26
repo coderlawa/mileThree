@@ -8,7 +8,7 @@ def index(request):
     A view to return the index page returns all recipes - including search functionality and display by public/private status
     """
 
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.order_by('?')
     context = {
         'recipes': recipes
     }

@@ -1,6 +1,6 @@
 # My Cook Book
 
-This website has been developed for the sole purpose share recipes as part of my milestone projects for becoming a Web Application Developer (Full Stack).
+This website has been developed for the sole purpose of publishing recipes and is one of my milestone projects for becoming a Web Application Developer (Full Stack) enrolled at City of Bristol College.
 
 ![Project Submission](https://img.shields.io/badge/Submitted-Dec%2026-orange)
 ![GitHub contributors](https://img.shields.io/badge/Contributors-1-green)
